@@ -25,6 +25,7 @@ public class HomeWorkTest {
         HomeWork hw = new HomeWork();
         Assert.assertArrayEquals(new int[]{2, 3, 4, 5, 1}, hw.shift(new int[]{1, 2, 3, 4, 5}, -1));
         Assert.assertArrayEquals(new int[]{3, 4, 5, 1, 2}, hw.shift(new int[]{1, 2, 3, 4, 5}, -2));
+        Assert.assertArrayEquals(new int[]{6, 1, 2, 3, 4, 5}, hw.shift(new int[]{1, 2, 3, 4, 5, 6}, 1));
         Assert.assertArrayEquals(new int[]{5, 1, 2, 3, 4}, hw.shift(new int[]{1, 2, 3, 4, 5}, 1));
         Assert.assertArrayEquals(new int[]{1, 2, 3, 4, 5}, hw.shift(new int[]{1, 2, 3, 4, 5}, -5));
         Assert.assertArrayEquals(new int[]{2, 3, 4, 5, 1}, hw.shift(new int[]{1, 2, 3, 4, 5}, -6));
