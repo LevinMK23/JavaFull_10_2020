@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class MatrixExamples {
 
     public static void printMatrix(char[][] m) {
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j < m[i].length; j++) {
-                System.out.printf("%c", m[i][j]);
+        for (char[] chars : m) {
+            for (char aChar : chars) {
+                System.out.printf("%c", aChar);
             }
             System.out.println();
         }
@@ -27,8 +27,8 @@ public class MatrixExamples {
         // *****
         //*******
         char[][] t = new char[n][2 * n - 1];
-        for (int i = 0; i < t.length; i++) {
-            Arrays.fill(t[i], ' ');
+        for (char[] chars : t) {
+            Arrays.fill(chars, ' ');
         }
         int start = 0;
         for (int i = n-1; i >= 0; i--) {
