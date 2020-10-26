@@ -70,11 +70,6 @@ public class XO {
         Scanner in = new Scanner(System.in);
         fillMap(3);
         printMap();
-        System.out.println("""
-                Игра крестики-нолики!
-                Вы играете за Х
-                Для того, чтобы совершить ход: введите номер строки и номер столбца
-                """);
         while (isInGame) {
             System.out.println("Ваш ход:");
             int x, y;
