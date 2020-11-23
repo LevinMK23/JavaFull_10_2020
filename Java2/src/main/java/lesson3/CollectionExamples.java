@@ -59,21 +59,21 @@ public class CollectionExamples {
         return map;
     }
 
-    public static Map<String, String> loadDictionary(String path) {
-        TreeMap<String, String> map = new TreeMap<>();
-        Scanner in = new Scanner(
-                CollectionExamples.class.getResourceAsStream(path), Charset.forName("windows-1251"));
-        while (in.hasNextLine()) {
-            String eng = in.nextLine().replaceAll("a ", "");
-            try {
-                String ru = in.nextLine().split(" +")[0];
-                map.put(eng, ru);
-                map.put(ru, eng);
-            } catch (Exception ignored) {
-            }
-        }
-        return map;
-    }
+//    public static Map<String, String> loadDictionary(String path) {
+//        TreeMap<String, String> map = new TreeMap<>();
+//        Scanner in = new Scanner(
+//                CollectionExamples.class.getResourceAsStream(path), Charset.forName("windows-1251"));
+//        while (in.hasNextLine()) {
+//            String eng = in.nextLine().replaceAll("a ", "");
+//            try {
+//                String ru = in.nextLine().split(" +")[0];
+//                map.put(eng, ru);
+//                map.put(ru, eng);
+//            } catch (Exception ignored) {
+//            }
+//        }
+//        return map;
+//    }
 
 
     public static void main(String[] args) {

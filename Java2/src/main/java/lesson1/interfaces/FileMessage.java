@@ -14,16 +14,16 @@ public class FileMessage<T> implements Readable<T>, Writable<T> {
     public FileMessage(String path) throws FileNotFoundException {
         this.path = path;
     }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public T read() throws Exception {
-        File file = new File(path);
-        in = new FileInputStream(file);
-        String value = new String(in.readAllBytes());
-        in.close();
-        return (T) value;
-    }
+//
+//    @SuppressWarnings("unchecked")
+//    @Override
+//    public T read() throws Exception {
+//        File file = new File(path);
+//        in = new FileInputStream(file);
+//        String value = new String(in.readAllBytes());
+//        in.close();
+//        return (T) value;
+//    }
 
     @Override
     public void write(T value) throws Exception {
@@ -31,5 +31,10 @@ public class FileMessage<T> implements Readable<T>, Writable<T> {
         out = new FileOutputStream(file, true);
         out.write(((String)value).getBytes());
         out.close();
+    }
+
+    @Override
+    public T read() throws Exception {
+        return null;
     }
 }
