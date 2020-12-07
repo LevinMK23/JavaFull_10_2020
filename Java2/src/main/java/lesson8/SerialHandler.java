@@ -1,4 +1,7 @@
-package lesson7;
+package lesson8;
+
+import lesson8.EchoServer;
+import lesson8.Message;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -9,7 +12,7 @@ import java.net.Socket;
 public class SerialHandler implements Closeable, Runnable {
 
     private static int cnt = 0;
-    private final String userName;
+    private String userName;
     private final ObjectInputStream is;
     private final ObjectOutputStream os;
     private boolean running;
@@ -44,6 +47,23 @@ public class SerialHandler implements Closeable, Runnable {
         while (running) {
             try {
                 Message message = (Message) is.readObject();
+                if (message.getMessage().startsWith("/changeNick")) {
+                    String[] data = message.getMessage().split(" ");
+                    String oldName = userName;
+                    userName = data[1];
+                    String msg = String.format("User %s change name to %s", oldName, userName);
+                    sendMessage(Message.of(userName, msg));
+                    continue;
+                }
+                if (message.getMessage().startsWith("/private")) {
+                    String[] data = message.getMessage().split(" ");
+                    String nick = data[1];
+                    String msg = data[2];
+                    sendMessage(message);
+                    server.sendMessageTo(userName, nick, msg);
+                    continue;
+                }
+                message.setAuthor(userName);
                 System.out.println(message);
                 server.broadCast(message);
             } catch (IOException | ClassNotFoundException e) {
@@ -56,6 +76,10 @@ public class SerialHandler implements Closeable, Runnable {
     public void sendMessage(Message message) throws IOException {
         os.writeObject(message);
         os.flush();
+    }
+
+    public String getUserName() {
+        return userName;
     }
 
     @Override
