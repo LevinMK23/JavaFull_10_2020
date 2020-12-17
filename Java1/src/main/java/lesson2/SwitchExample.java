@@ -18,12 +18,7 @@ public class SwitchExample {
         String s = in.next();
         Color c = Color.BLUE;
 
-        switch (c) {
-            case RED -> {}
-            case BLUE -> {}
-            case GREEN -> {}
-            case WHITE -> {}
-        }
+
 //        int x = switch (c) {
 //            case "one" -> 1;
 //            case "two" -> 2;
