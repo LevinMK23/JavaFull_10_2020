@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class Tests {
+
     public static void main(String[] args) throws IOException {
         // InputStream stream = Tests.class.getResourceAsStream("data.txt");
         OutputStream os = new FileOutputStream("out.txt", true);
