@@ -7,7 +7,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class StudentsSQLiteDao implements StudentsDao, Closeable {
 
@@ -51,7 +54,9 @@ public class StudentsSQLiteDao implements StudentsDao, Closeable {
             student.setId(rs.getInt("ID"));
             student.setName(rs.getString("NAME"));
             student.setSurname(rs.getString("SURNAME"));
-            student.setBirthDate(LocalDate.ofEpochDay(rs.getLong("BIRTH_DATE")));
+            student.setBirthDate(new Timestamp(rs.getLong("BIRTH_DATE"))
+                    .toLocalDateTime()
+                    .toLocalDate());
             student.setGroup(rs.getInt("GROUP_ID"));
         }
         return student;
